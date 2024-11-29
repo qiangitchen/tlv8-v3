@@ -86,6 +86,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("label", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				map.put("url", samenu.getLink());
@@ -106,6 +107,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("label", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				map.put("url", samenu.getLink());
@@ -125,6 +127,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("label", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				map.put("path", samenu.getLink());
@@ -144,6 +147,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("label", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				if (!hashChild(samenu, samenus)) {
@@ -174,6 +178,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("text", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				map.put("url", samenu.getLink());
@@ -200,6 +205,7 @@ public class FuncTreeController extends BaseController {
 				map.put("id", samenu.getId());
 				map.put("text", samenu.getTitle());
 				map.put("icon", samenu.getIcon());
+				map.put("layuiIcon", samenu.getLayuiicon());
 				map.put("process", samenu.getProcess());
 				map.put("activity", samenu.getProcess());
 				map.put("url", samenu.getLink());
