@@ -35,6 +35,12 @@
 			<artifactId>tlv8-v3-common</artifactId>
 		</dependency>
 
+		<!-- 系统模块 -->
+		<dependency>
+			<groupId>com.tlv8.v3</groupId>
+			<artifactId>tlv8-v3-system</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -192,12 +192,20 @@
 				<artifactId>tlv8-v3-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			
+			<!-- 系统模块 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-system</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
 
 	<modules>
 		<module>tlv8-v3-common</module>
+		<module>tlv8-v3-system</module>
 		<module>tlv8-v3-main</module>
 	</modules>
 
