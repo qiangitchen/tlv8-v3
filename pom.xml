@@ -22,6 +22,7 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<velocity.version>1.7</velocity.version>
 		<poi.version>5.2.3</poi.version>
 		<lucene.version>3.6.0</lucene.version>
 		<sa-token.version>1.39.0</sa-token.version>
@@ -69,6 +70,20 @@
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.2</version>
+			</dependency>
+			
+			<!-- velocity代码生成使用模板 -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-engine-core</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+			
+			<!-- velocity代码生成使用模板 -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
 			</dependency>
 
 			<!-- HTML 解析 -->
@@ -199,6 +214,27 @@
 				<artifactId>tlv8-v3-system</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			
+			<!-- 文件存取 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-doc-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<!-- 服务器监控 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-monitor</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<!-- 静态资源 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-static</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -206,6 +242,8 @@
 	<modules>
 		<module>tlv8-v3-common</module>
 		<module>tlv8-v3-system</module>
+		<module>tlv8-v3-static</module>
+		<module>tlv8-v3-monitor</module>
 		<module>tlv8-v3-main</module>
 	</modules>
 
