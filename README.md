@@ -9,7 +9,7 @@
       <img src='https://img.shields.io/badge/jdk-17+-redviolet.svg'>
    </a>
    <a href="LICENSE" rel="nofollow">
-      <img src="https://img.shields.io/badge/license-MIT-redviolet.svg">
+      <img src="https://img.shields.io/badge/license-Apache2.0-redviolet.svg">
    </a>
 </p>
 
