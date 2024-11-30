@@ -12,6 +12,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.tlv8.v3.common.redis.RedisCache;
 import com.tlv8.v3.common.utils.ServletUtils;
@@ -33,6 +34,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author ChenQian
  * @category 2011-2-12
  */
+@Component
 public class BaseController {
 	@Autowired
 	protected HttpServletRequest request;

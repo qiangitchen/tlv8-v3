@@ -242,6 +242,13 @@
 				<version>${project.version}</version>
 			</dependency>
 			
+			<!-- 流程引擎 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-flow</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
 			<!-- 报表模块 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
@@ -269,6 +276,7 @@
 	<modules>
 		<module>tlv8-v3-common</module>
 		<module>tlv8-v3-system</module>
+		<module>tlv8-v3-flow</module>
 		<module>tlv8-v3-ureport</module>
 		<module>tlv8-v3-monitor</module>
 		<module>tlv8-v3-static</module>
