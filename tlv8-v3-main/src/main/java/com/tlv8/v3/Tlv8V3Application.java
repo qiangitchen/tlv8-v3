@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 import cn.dev33.satoken.SaManager;
 
 @SpringBootApplication
+@ImportResource("classpath:ureport-console-context.xml")
 public class Tlv8V3Application {
 	private static final Logger logger = LoggerFactory.getLogger(Tlv8V3Application.class);
 

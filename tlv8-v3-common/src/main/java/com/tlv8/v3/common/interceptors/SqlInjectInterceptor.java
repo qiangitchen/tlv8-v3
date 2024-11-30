@@ -125,7 +125,8 @@ public class SqlInjectInterceptor implements HandlerInterceptor {
 	 * @des 需要忽略拦截的请求[慎用]
 	 */
 	private boolean isBackAction(String requestPath) {
-		return requestPath.endsWith("/core/expportAction") || requestPath.endsWith("/core/importAction");
+		return requestPath.contains("/ureport/") || requestPath.endsWith("/core/expportAction")
+				|| requestPath.endsWith("/core/importAction");
 	}
 
 }
