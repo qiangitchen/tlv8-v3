@@ -33,6 +33,7 @@ UI参考： [layuimini](https://gitee.com/zhongshaofa/layuimini)
 
 1. 主目录运行：mvn clean install
 2. tlv8-v3-main: 运行com.tlv8.v3.Tlv8V3Application
+3. 文档服务：tlv8-v3-doc-server运行com.tlv8.v3.doc.DocServerApplication
 
 
 

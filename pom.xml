@@ -65,14 +65,14 @@
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.2</version>
 			</dependency>
-			
+
 			<!-- velocity代码生成使用模板 -->
 			<dependency>
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-engine-core</artifactId>
 				<version>${velocity.version}</version>
 			</dependency>
-			
+
 			<!-- velocity代码生成使用模板 -->
 			<dependency>
 				<groupId>org.apache.velocity</groupId>
@@ -120,6 +120,13 @@
 				<version>1.4</version>
 			</dependency>
 
+			<!-- 共享文件 -->
+			<dependency>
+				<groupId>org.codelibs</groupId>
+				<artifactId>jcifs</artifactId>
+				<version>2.1.39</version>
+			</dependency>
+
 			<!--Lucene 核心包 -->
 			<dependency>
 				<groupId>org.apache.lucene</groupId>
@@ -138,7 +145,7 @@
 				<artifactId>lucene-highlighter</artifactId>
 				<version>${lucene.version}</version>
 			</dependency>
-			
+
 			<!-- 谷歌zxing二维码工具包 -->
 			<dependency>
 				<groupId>com.google.zxing</groupId>
@@ -150,7 +157,7 @@
 				<artifactId>javase</artifactId>
 				<version>${zxing.version}</version>
 			</dependency>
-			
+
 			<!-- codehaus jackson -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
@@ -227,7 +234,7 @@
 				<artifactId>tlv8-v3-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 系统模块 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
@@ -235,34 +242,41 @@
 				<version>${project.version}</version>
 			</dependency>
 			
+			<!-- 文档服务 -->
+			<dependency>
+				<groupId>com.tlv8.v3</groupId>
+				<artifactId>tlv8-v3-doc-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<!-- 文件存取 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
 				<artifactId>tlv8-v3-doc-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 流程引擎 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
 				<artifactId>tlv8-v3-flow</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 报表模块 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
 				<artifactId>tlv8-v3-ureport</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 服务器监控 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
 				<artifactId>tlv8-v3-monitor</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 静态资源 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
@@ -276,6 +290,8 @@
 	<modules>
 		<module>tlv8-v3-common</module>
 		<module>tlv8-v3-system</module>
+		<module>tlv8-v3-doc-server</module>
+		<module>tlv8-v3-doc-client</module>
 		<module>tlv8-v3-flow</module>
 		<module>tlv8-v3-ureport</module>
 		<module>tlv8-v3-monitor</module>
