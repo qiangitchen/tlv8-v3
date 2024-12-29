@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+
+import com.tlv8.v3.common.base.Data;
+import com.tlv8.v3.common.redis.RedisCache;
 import com.tlv8.v3.common.domain.AjaxResult;
 import com.tlv8.v3.common.utils.AesEncryptUtil;
 import com.tlv8.v3.common.utils.IDUtils;
@@ -15,17 +26,8 @@ import com.tlv8.v3.system.service.ISaMenuTreeService;
 import com.tlv8.v3.system.service.ISysParamsService;
 import com.tlv8.v3.system.service.SaOpPermissionService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.alibaba.fastjson.JSON;
-import com.tlv8.v3.common.base.Data;
-import com.tlv8.v3.common.redis.RedisCache;
-
 import cn.dev33.satoken.stp.StpUtil;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 /**

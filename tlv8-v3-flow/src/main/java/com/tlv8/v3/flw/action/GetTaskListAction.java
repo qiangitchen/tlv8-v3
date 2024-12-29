@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
+
 import com.tlv8.v3.common.action.ActionSupport;
 import com.tlv8.v3.common.base.Data;
 import com.tlv8.v3.common.db.DBUtils;
-import com.alibaba.fastjson.JSONArray;
 import com.tlv8.v3.system.utils.ContextUtils;
 
 /**
@@ -36,7 +37,6 @@ public class GetTaskListAction extends ActionSupport {
 		return data;
 	}
 
-	@SuppressWarnings("deprecation")
 	@ResponseBody
 	@RequestMapping("/GetTaskListAction")
 	public Object execute(@RequestParam(name = "limit", defaultValue = "5") Integer limit) throws Exception {

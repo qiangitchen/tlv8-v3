@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.tlv8.v3.common.db.DBUtils;
+import com.tlv8.v3.common.utils.spring.SpringUtils;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.BeansException;
@@ -38,8 +41,6 @@ import com.bstek.ureport.exception.ReportComputeException;
 import com.bstek.ureport.model.Cell;
 import com.bstek.ureport.model.Report;
 import com.bstek.ureport.provider.image.ImageProvider;
-import com.tlv8.v3.common.db.DBUtils;
-import com.tlv8.v3.common.utils.spring.SpringUtils;
 
 /**
  * @author Jacky.gao
@@ -236,7 +237,6 @@ public class Utils implements ApplicationContextAware {
 					}
 
 					@Override
-					@SuppressWarnings("deprecation")
 					public Connection getConnection() {
 						try {
 							return DBUtils.getAppConn(k);
@@ -250,7 +250,7 @@ public class Utils implements ApplicationContextAware {
 			}
 		} catch (Exception e) {
 		}
-		//spring 数据源
+		// spring 数据源
 		SqlSessionFactory sqlSessionFactory = SpringUtils.getBean(SqlSessionFactory.class);
 		if (sqlSessionFactory != null) {
 			buildinDatasources.add(new BuildinDatasource() {

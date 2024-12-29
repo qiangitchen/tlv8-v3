@@ -1,12 +1,14 @@
 package com.tlv8.v3.system.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
+import com.tlv8.v3.system.pojo.SaOprolemanagement;
+
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.tlv8.v3.system.pojo.SaOprolemanagement;
-
+@DS("system")
 @Mapper
 public interface SaOprolemanagementMapper {
     /**

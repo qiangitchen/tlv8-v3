@@ -24,7 +24,7 @@
                m.url                                                              as spath,
                m.code                                                             as sname,
                case when (m.url is null or m.url = '') then 'dir' else 'menu' end as stype,
-               m.icon                                                        as sicon,
+               m.icon                                                             as sicon,
                m.layuiicon                                                        as slayuiicon,
                m.label                                                            as stitle,
                m.sorts                                                            as ssort,

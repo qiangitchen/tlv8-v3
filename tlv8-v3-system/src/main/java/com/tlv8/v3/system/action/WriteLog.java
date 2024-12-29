@@ -1,9 +1,6 @@
 package com.tlv8.v3.system.action;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tlv8.v3.common.utils.IDUtils;
-import com.tlv8.v3.common.utils.IPUtils;
-import com.tlv8.v3.common.utils.StringUtils;
 import com.tlv8.v3.system.bean.ContextBean;
 import com.tlv8.v3.system.controller.UserController;
 import com.tlv8.v3.system.pojo.SaLog;
@@ -20,6 +17,10 @@ import org.springframework.web.util.UrlPathHelper;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+
+import com.tlv8.v3.common.utils.IDUtils;
+import com.tlv8.v3.common.utils.IPUtils;
+import com.tlv8.v3.common.utils.StringUtils;
 
 @Component
 public class WriteLog {

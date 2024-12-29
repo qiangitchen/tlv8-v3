@@ -62,7 +62,6 @@ public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper {
 			public void setReadListener(ReadListener readListener) {
 
 			}
-
 		};
 	}
 }

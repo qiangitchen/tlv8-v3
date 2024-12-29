@@ -1,7 +1,5 @@
 package com.tlv8.v3.common.jgrid;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -15,10 +13,11 @@ import com.tlv8.v3.common.utils.CodeUtils;
 import com.tlv8.v3.common.utils.StringArray;
 
 /**
+ * grid基础动作
+ * 
  * @author 陈乾
- * @category grid基础动作
  */
-@SuppressWarnings({ "rawtypes", "deprecation" })
+@SuppressWarnings({ "rawtypes" })
 public class BasegetGridAction extends ActionSupport {
 	protected Data data = new Data();
 	protected String gridid = "";// 列表ID（必须）
@@ -54,7 +53,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setWhere(String where) {
-		this.where = CodeUtils.getDoubleDecode(where);
+		this.where = CodeUtils.getDecode(where);
 		this.where = AesEncryptUtil.desEncrypt(this.where);
 		this.where = CodeUtils.getDoubleDecode(this.where);
 	}
@@ -72,11 +71,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setBillid(String billid) {
-		try {
-			this.billid = URLDecoder.decode(billid, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.billid = billid;
 	}
 
 	public String getBillid() {
@@ -84,11 +79,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setColumns(String columns) {
-		try {
-			this.columns = URLDecoder.decode(columns, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.columns = columns;
 	}
 
 	public String getColumns() {
@@ -96,11 +87,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setColumnstype(String columnstype) {
-		try {
-			this.columnstype = URLDecoder.decode(columnstype, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.columnstype = columnstype;
 	}
 
 	public String getColumnstype() {
@@ -132,11 +119,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setTable(String table) {
-		try {
-			this.table = URLDecoder.decode(table, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			this.table = table;
-		}
+		this.table = table;
 	}
 
 	public String getTable() {
@@ -144,11 +127,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setGridid(String gridid) {
-		try {
-			this.gridid = URLDecoder.decode(gridid, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.gridid = gridid;
 	}
 
 	public String getGridid() {
@@ -156,11 +135,7 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setOrderby(String orderby) {
-		try {
-			this.orderby = URLDecoder.decode(orderby, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.orderby = orderby;
 	}
 
 	public String getOrderby() {
@@ -168,12 +143,9 @@ public class BasegetGridAction extends ActionSupport {
 	}
 
 	public void setInsql(String insql) {
-		try {
-			this.insql = URLDecoder.decode(insql, "UTF-8");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.insql = CodeUtils.getDecode(insql);
 		this.insql = AesEncryptUtil.desEncrypt(this.insql);
+		this.insql = CodeUtils.getDoubleDecode(this.insql);
 	}
 
 //	public String getInsql() {
@@ -363,7 +335,7 @@ public class BasegetGridAction extends ActionSupport {
 		String sql = "";
 		if (dbkay == null || "".equals(dbkay))
 			dbkay = "system";
-		String inwhere = "where 1=1 ";
+		String inwhere = " where 1=1 ";
 		columns = columns.replace("No,", "");
 		columns = columns.replace("master_check,", "");
 		if (columns.toUpperCase().indexOf(",VERSION") < 0) {
@@ -382,21 +354,21 @@ public class BasegetGridAction extends ActionSupport {
 			lSQL = lSQL.substring(0, lSQL.toLowerCase().indexOf("where"));
 		}
 		if (DBUtils.IsOracleDB(dbkay) || DBUtils.IsDMDB(dbkay)) {
-			sql = "select fID," + columns + " from(select a.*,rownum my_num from(select *from (" + lSQL + inwhere + " "
-					+ rSQL + ") where 1=1 grid_query_param )a where rownum <= endrow ) t where t.my_num> startrow";
+			sql = "select fID," + columns + " from(select a.*,rownum my_num from(select * from (" + lSQL + inwhere + " "
+					+ rSQL + ")sa where 1=1 grid_query_param )a where rownum <= endrow ) t where t.my_num> startrow";
 		} else if (DBUtils.IsMySQLDB(dbkay)) {
 			sql = "select fID," + columns + " from(" + lSQL + inwhere + " " + rSQL
-					+ ") where fID is not null grid_query_param limit startrow,endrow";
+					+ ")sa where fID is not null grid_query_param limit startrow,endrow";
 		} else if (DBUtils.IsPostgreSQL(dbkay)) {
 			sql = "select fID," + columns + " from(" + lSQL + inwhere + " " + rSQL
-					+ ") where fID is not null grid_query_param limit endrow OFFSET startrow";
+					+ ")sa where fID is not null grid_query_param limit endrow OFFSET startrow";
 		} else {
 			sql = "select fID," + columns + " from (select * from (" + lSQL + inwhere + " " + rSQL
-					+ ") where fID in (select top endrow fID from (" + lSQL + inwhere + " " + rSQL + ") where 1=1 "
+					+ ")sa where fID in (select top endrow fID from (" + lSQL + inwhere + " " + rSQL + ")sb where 1=1 "
 					+ " grid_query_param) and fID not in (select top startrow fID from (" + lSQL + inwhere + " " + rSQL
-					+ ") where 1=1 " + " grid_query_param)";
+					+ ")sc where 1=1 " + " grid_query_param)";
 		}
-		String sql_count = "select count(*) ALLPAGE from (" + insql + ") where 1 =1 grid_query_param";
+		String sql_count = "select count(*) ALLPAGE from (" + insql + ")a where 1 =1 grid_query_param";
 		int startrow = (page == 0) ? 0 : (page - 1) * row;
 		int endrow = (page == 0) ? (startrow + row) : (startrow + row);
 		if (DBUtils.IsMySQLDB(dbkay))
@@ -405,6 +377,7 @@ public class BasegetGridAction extends ActionSupport {
 		// System.out.println(filter);
 		String grid_query_param = (filter != null && !("").equals(filter)) ? " and (" + filter + ")" : "";
 		grid_query_param += (billid != null && !"".equals(billid)) ? "fbillid='" + billid + "'" : "";
+		String countparam = grid_query_param;
 		if (!"".equals(orderby) && orderby != null) {
 			grid_query_param += " order by " + orderby + ", fID asc";
 		} else {
@@ -413,7 +386,7 @@ public class BasegetGridAction extends ActionSupport {
 		// System.out.println(grid_query_param);
 		sql = sql.replace("grid_query_param", grid_query_param);
 		// System.out.println(sql);
-		sql_count = sql_count.replace("grid_query_param", grid_query_param);
+		sql_count = sql_count.replace("grid_query_param", countparam);
 		if ("system".equals(dbkay)) {
 			sql = sql.replaceAll("fID", "sID");
 			sql_count = sql_count.replaceAll("fID", "sID");

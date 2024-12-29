@@ -279,9 +279,9 @@ public final class MimeUtils {
 		add("text/calendar", "ics");
 		add("text/calendar", "icz");
 		add("text/comma-separated-values", "csv");
-        add("text/css", "css");
-        add("text/html", "htm");
-        add("text/html", "html");
+//        add("text/css", "css");
+//        add("text/html", "htm");
+//        add("text/html", "html");
 		add("text/h323", "323");
 		add("text/iuls", "uls");
 		add("text/mathml", "mml");
@@ -294,7 +294,7 @@ public final class MimeUtils {
 		add("text/richtext", "rtx");
 		add("text/rtf", "rtf");
 		add("text/texmacs", "ts");
-        add("text/text", "phps");
+//        add("text/text", "phps");
 		add("text/tab-separated-values", "tsv");
 		add("text/xml", "xml");
 		add("text/x-bibtex", "bib");
@@ -313,7 +313,6 @@ public final class MimeUtils {
 		add("text/x-dsrc", "d");
 		add("text/x-haskell", "hs");
 		add("text/x-java", "java");
-		add("text/x-sql", "sql");
 		add("text/x-literate-haskell", "lhs");
 		add("text/x-moc", "moc");
 		add("text/x-pascal", "p");

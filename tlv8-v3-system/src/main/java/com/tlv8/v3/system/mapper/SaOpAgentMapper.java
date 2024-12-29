@@ -2,8 +2,10 @@ package com.tlv8.v3.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.tlv8.v3.system.pojo.SaOpAgent;
 
+@DS("system")
 @Mapper
 public interface SaOpAgentMapper {
 	/**

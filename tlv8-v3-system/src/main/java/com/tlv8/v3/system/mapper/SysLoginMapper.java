@@ -2,10 +2,12 @@ package com.tlv8.v3.system.mapper;
 
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.tlv8.v3.system.pojo.SysLogin;
 
+import org.apache.ibatis.annotations.Mapper;
+
+@DS("system")
 @Mapper
 public interface SysLoginMapper {
 

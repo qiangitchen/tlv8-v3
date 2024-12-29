@@ -1,11 +1,9 @@
 package com.tlv8.v3.common.data;
 
-import java.net.URLDecoder;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
-
-import org.apache.ibatis.session.SqlSession;
 
 import com.tlv8.v3.common.action.ActionSupport;
 import com.tlv8.v3.common.base.Data;
@@ -29,7 +27,6 @@ public class BaseDeleteAction extends ActionSupport {
 		this.data = data;
 	}
 
-	@SuppressWarnings("deprecation")
 	public String deleteData() throws SQLException, NamingException, Exception {
 		String result = "";
 		if (table == null || "".equals(table)) {
@@ -38,9 +35,13 @@ public class BaseDeleteAction extends ActionSupport {
 		String sql = "delete from " + table + " where fID = '" + getRowid() + "'";
 		if ("system".equals(dbkay))
 			sql = sql.replace("fID", "sID");
-		SqlSession session = DBUtils.getSession(dbkay);
+		Connection conn = null;
+		boolean autocommit = true;
 		try {
-			DBUtils.excuteDelete(session, sql);
+			conn = DBUtils.getAppConn(dbkay);
+			autocommit = conn.getAutoCommit();
+			conn.setAutoCommit(false);
+			DBUtils.excuteDelete(conn, sql);
 			String billTable = "";
 			String BillID = "";
 			if (!"".equals(cascade) && cascade != null) {
@@ -49,26 +50,22 @@ public class BaseDeleteAction extends ActionSupport {
 					billTable = cas[n].split(":")[0];
 					BillID = cas[n].split(":")[1];
 					String dsql = "delete from " + billTable + " where " + BillID + " = '" + getRowid() + "'";
-					DBUtils.excuteDelete(session, dsql);// 级联删除
+					DBUtils.excuteDelete(conn, dsql);// 级联删除
 				}
 			}
-			session.commit();
+			conn.commit();
 		} catch (Exception e) {
-			session.rollback();
-			session.close();
+			conn.rollback();
 			throw new SQLException(e);
 		} finally {
-			session.close();
+			conn.setAutoCommit(autocommit);
+			DBUtils.closeConn(conn, null, null);
 		}
 		return result;
 	}
 
 	public void setRowid(String rowid) {
-		try {
-			this.rowid = URLDecoder.decode(rowid, "UTF-8");
-		} catch (Exception e) {
-			this.rowid = rowid;
-		}
+		this.rowid = rowid;
 	}
 
 	public String getRowid() {
@@ -76,12 +73,7 @@ public class BaseDeleteAction extends ActionSupport {
 	}
 
 	public void setDbkay(String dbkay) {
-		try {
-			if (dbkay != null && !"".equals(dbkay))
-				this.dbkay = URLDecoder.decode(dbkay, "UTF-8");
-		} catch (Exception e) {
-			this.dbkay = dbkay;
-		}
+		this.dbkay = dbkay;
 	}
 
 	public String getDbkay() {
@@ -89,11 +81,7 @@ public class BaseDeleteAction extends ActionSupport {
 	}
 
 	public void setTable(String table) {
-		try {
-			this.table = URLDecoder.decode(table, "UTF-8");
-		} catch (Exception e) {
-			this.table = table;
-		}
+		this.table = table;
 	}
 
 	public String getTable() {
@@ -101,11 +89,7 @@ public class BaseDeleteAction extends ActionSupport {
 	}
 
 	public void setCascade(String cascade) {
-		try {
-			this.cascade = URLDecoder.decode(cascade, "UTF-8");
-		} catch (Exception e) {
-			this.cascade = cascade;
-		}
+		this.cascade = cascade;
 	}
 
 	public String getCascade() {

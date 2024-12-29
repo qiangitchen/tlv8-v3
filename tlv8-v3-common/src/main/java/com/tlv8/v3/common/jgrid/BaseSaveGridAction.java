@@ -1,8 +1,6 @@
 package com.tlv8.v3.common.jgrid;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import javax.naming.NamingException;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.ibatis.session.SqlSession;
 import org.xml.sax.SAXException;
 
 import com.alibaba.fastjson.JSON;
@@ -57,7 +54,6 @@ public class BaseSaveGridAction extends ActionSupport {
 		this.data = data;
 	}
 
-	@SuppressWarnings("deprecation")
 	public String saveData()
 			throws SQLException, NamingException, SAXException, IOException, ParserConfigurationException, Exception {
 		log.info("grid保存数据...");
@@ -77,12 +73,14 @@ public class BaseSaveGridAction extends ActionSupport {
 				log.error("保存数据失败! 内容:" + cells);
 			}
 		}
-		SqlSession session = DBUtils.getSession(dbkay);
+		boolean autocommit = true;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		String sql = "";
 		try {
-			conn = session.getConnection();
+			conn = DBUtils.getAppConn(dbkay);
+			autocommit = conn.getAutoCommit();
+			conn.setAutoCommit(false);
 			Set<String> it = json.keySet();
 			for (String key : it) {
 				String datas = json.getString(key);
@@ -94,7 +92,7 @@ public class BaseSaveGridAction extends ActionSupport {
 				}
 				boolean isNew = true;
 				String SreachSql = "select VERSION from " + getTable() + " where " + skey + " = '" + key + "'";
-				List<Map<String, String>> list = DBUtils.selectStringList(session, SreachSql, true);
+				List<Map<String, String>> list = DBUtils.selectStringList(dbkay, SreachSql, true);
 				if (list.size() > 0) {
 					isNew = false;
 					String version = list.get(0).get("VERSION");
@@ -186,18 +184,15 @@ public class BaseSaveGridAction extends ActionSupport {
 				ps.setString(values.size() + 1, key);
 				ps.executeUpdate();
 			}
-			session.commit(true);
+			conn.commit();
 		} catch (Exception e) {
-			session.rollback(true);
+			conn.rollback();
 			result = "false";
 			log.error("grid保存数据失败! sql:" + sql + " " + e.getMessage());
-			session.close();
 			throw new SQLException(RegexUtil.getSubOraex(e.getMessage()));
 		} finally {
-			try {
-				DBUtils.closeConn(session, conn, ps, null);
-			} catch (Exception e) {
-			}
+			conn.setAutoCommit(autocommit);
+			DBUtils.closeConn(conn, ps, null);
 		}
 		log.info("grid保存数据完成.");
 		return result;
@@ -208,11 +203,7 @@ public class BaseSaveGridAction extends ActionSupport {
 	}
 
 	public void setDbkay(String dbkay) {
-		try {
-			this.dbkay = URLDecoder.decode(dbkay, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.dbkay = dbkay;
 	}
 
 	public String getDbkay() {
@@ -220,11 +211,7 @@ public class BaseSaveGridAction extends ActionSupport {
 	}
 
 	public void setTable(String table) {
-		try {
-			this.table = URLDecoder.decode(table, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.table = table;
 	}
 
 	public String getTable() {
@@ -232,11 +219,7 @@ public class BaseSaveGridAction extends ActionSupport {
 	}
 
 	public void setCells(String cells) {
-		try {
-			this.cells = URLDecoder.decode(cells, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.cells = cells;
 	}
 
 	public String getCells() {
@@ -244,11 +227,7 @@ public class BaseSaveGridAction extends ActionSupport {
 	}
 
 	public void setBillid(String billid) {
-		try {
-			this.billid = URLDecoder.decode(billid, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.billid = billid;
 	}
 
 	public String getBillid() {

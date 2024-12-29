@@ -178,6 +178,13 @@
 				<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
 				<version>3.5.9</version>
 			</dependency>
+			
+			<!-- 动态数据源切换 -->
+			<dependency>
+			    <groupId>com.baomidou</groupId>
+			    <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+			    <version>4.3.1</version>
+			</dependency>
 
 			<!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
 			<dependency>

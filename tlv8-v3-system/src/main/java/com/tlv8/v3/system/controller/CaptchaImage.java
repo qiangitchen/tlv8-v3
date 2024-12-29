@@ -6,6 +6,14 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.FastByteArrayOutputStream;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tlv8.v3.common.base.SecurityCode;
+import com.tlv8.v3.common.base.SecurityImage;
 import com.tlv8.v3.common.constant.CacheConstants;
 import com.tlv8.v3.common.constant.Constants;
 import com.tlv8.v3.common.domain.AjaxResult;
@@ -15,15 +23,6 @@ import com.tlv8.v3.common.utils.IDUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.FastByteArrayOutputStream;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.tlv8.v3.common.base.SecurityCode;
-import com.tlv8.v3.common.base.SecurityImage;
 
 /**
  * 验证码

@@ -37,6 +37,12 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
 		</dependency>
+		
+		<!-- 动态数据源切换 -->
+		<dependency>
+		    <groupId>com.baomidou</groupId>
+		    <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+		</dependency>
 
 		<!-- Mysql驱动包 -->
 		<dependency>

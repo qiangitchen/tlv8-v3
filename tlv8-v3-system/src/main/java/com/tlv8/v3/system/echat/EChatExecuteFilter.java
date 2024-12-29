@@ -10,11 +10,11 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.tlv8.v3.common.utils.FileAndString;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import com.tlv8.v3.common.utils.FileAndString;
 
 public class EChatExecuteFilter {
 	public final static String modelFile = "static/resources/echarts/chartsmodle.em";

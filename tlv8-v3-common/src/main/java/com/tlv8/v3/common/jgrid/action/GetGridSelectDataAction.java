@@ -1,7 +1,5 @@
 package com.tlv8.v3.common.jgrid.action;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -16,6 +14,8 @@ import java.util.regex.Pattern;
 
 import javax.naming.NamingException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +33,8 @@ import com.tlv8.v3.common.utils.StringArray;
 @Controller
 @Scope("prototype")
 public class GetGridSelectDataAction extends ActionSupport {
+	private static final Logger logger = LoggerFactory.getLogger(GetGridSelectDataAction.class);
+
 	private Data data = new Data();
 	private String dbkey = null;
 	private String sql = null;
@@ -50,7 +52,7 @@ public class GetGridSelectDataAction extends ActionSupport {
 		} catch (Exception e) {
 			m = "操作失败：" + e.getMessage();
 			f = "false";
-			e.printStackTrace();
+			logger.error("操作失败", e);
 		}
 		data.setData(r);
 		data.setFlag(f);
@@ -58,7 +60,6 @@ public class GetGridSelectDataAction extends ActionSupport {
 		return success(data);
 	}
 
-	@SuppressWarnings("deprecation")
 	private String exeQueryAction() throws SQLException, NamingException {
 		String result = "";
 		Connection conn = null;
@@ -148,11 +149,7 @@ public class GetGridSelectDataAction extends ActionSupport {
 	}
 
 	public void setDbkey(String dbkey) {
-		try {
-			this.dbkey = URLDecoder.decode(dbkey, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.dbkey = dbkey;
 	}
 
 	public String getSql() {
@@ -160,11 +157,7 @@ public class GetGridSelectDataAction extends ActionSupport {
 	}
 
 	public void setSql(String sql) {
-		try {
-			this.sql = URLDecoder.decode(sql, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.sql = sql;
 	}
 
 }

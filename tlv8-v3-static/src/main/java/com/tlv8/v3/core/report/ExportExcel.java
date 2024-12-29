@@ -21,8 +21,7 @@ import jxl.write.biff.RowsExceededException;
 @SuppressWarnings({ "rawtypes" })
 public class ExportExcel {
 
-	public static void exportExcel(OutputStream os, Object objOut)
-			throws Exception {
+	public static void exportExcel(OutputStream os, Object objOut) throws Exception {
 		@SuppressWarnings("unused")
 		InputStream intfile = null;
 		try {
@@ -39,13 +38,11 @@ public class ExportExcel {
 			WritableWorkbook wwb = Workbook.createWorkbook(os); // 建立excel文件
 
 			int ii = wwb.getNumberOfSheets();
-			WritableSheet ws = wwb.createSheet("Sheet" + Integer.toString(ii),
-					ii); // 创建一个工作表
+			WritableSheet ws = wwb.createSheet("Sheet" + Integer.toString(ii), ii); // 创建一个工作表
 
 			// 设置单元格的文字格式
-			WritableFont wf = new WritableFont(WritableFont.ARIAL, 10,
-					WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE,
-					Colour.BLUE);
+			WritableFont wf = new WritableFont(WritableFont.ARIAL, 10, WritableFont.NO_BOLD, false,
+					UnderlineStyle.NO_UNDERLINE, Colour.BLUE);
 			WritableCellFormat wcf = new WritableCellFormat(wf);
 			wcf.setVerticalAlignment(VerticalAlignment.CENTRE);
 			wcf.setAlignment(Alignment.CENTRE);

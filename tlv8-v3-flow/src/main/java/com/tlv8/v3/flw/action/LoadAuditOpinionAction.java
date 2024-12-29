@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+
 import com.tlv8.v3.common.action.ActionSupport;
 import com.tlv8.v3.common.base.Data;
 import com.tlv8.v3.common.db.DBUtils;
-import com.alibaba.fastjson.JSON;
 
 /**
  * 加载审批意见
@@ -39,12 +41,16 @@ public class LoadAuditOpinionAction extends ActionSupport {
 	@ResponseBody
 	@RequestMapping("/LoadAuditOpinionAction")
 	public Object execute() throws Exception {
-		String sql = "select t.FAGREETEXT,FCREATETIME,FCREATEPERID,FCREATEPERNAME,FSIGN from OA_FLOWRECORD t where  FBILLID=? and t.FOPVIEWID = ? order by FCREATETIME asc";
+		SQL sql = new SQL();
+		sql.SELECT("FAGREETEXT,FCREATETIME,FCREATEPERID,FCREATEPERNAME,FSIGN");
+		sql.FROM("OA_FLOWRECORD");
+		sql.WHERE("FBILLID=? and FOPVIEWID = ?");
+		sql.ORDER_BY("FCREATETIME asc");
 		try {
 			List<Object> params = new ArrayList<Object>();
 			params.add(fbillID);
 			params.add(fopviewID);
-			List<Map<String, String>> res = DBUtils.selectStringList("oa", sql, params, true);
+			List<Map<String, String>> res = DBUtils.selectStringList("oa", sql.toString(), params, true);
 			for (Map<String, String> map : res) {
 				map.put("SID", getSignID(map.get("FCREATEPERID")));
 			}
@@ -57,9 +63,8 @@ public class LoadAuditOpinionAction extends ActionSupport {
 		return success(data);
 	}
 
-	@SuppressWarnings("deprecation")
 	private String getSignID(String personid) {
-		SqlSession session = DBUtils.getSession("system");
+		SqlSession session = DBUtils.getSqlSession();
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.alibaba.fastjson.JSON;
+
 import com.tlv8.v3.common.constant.HttpStatus;
 import com.tlv8.v3.common.domain.AjaxResult;
 import com.tlv8.v3.common.utils.ServletUtils;
@@ -78,7 +79,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 		return patex.contains("/favicon.ico") || patex.contains("/DocServer/") || patex.endsWith("/WeiXinPayNotify")
 				|| patex.endsWith("/WeiXinRefundNotify") || patex.endsWith("/AliPayNotify") || patex.contains("/yyZX")
 				|| patex.contains("/getHXXL") || patex.contains("/tv/") || patex.contains("/ai_alarm")
-				|| patex.contains("/camera/capture/");
+				|| patex.contains("/camera/capture/") || patex.contains("/index/hook/");
 	}
 
 	/**

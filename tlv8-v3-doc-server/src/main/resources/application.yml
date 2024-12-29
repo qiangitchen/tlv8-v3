@@ -28,10 +28,14 @@ spring:
     basename: i18n/messages
   # 数据库配置
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://dev.tlv8.com:5432/tlv8-vue
-    username: postgres
-    password: Password
+    dynamic:
+      primary: doc
+      datasource:
+        doc:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://dev.tlv8.com:5432/tlv8-vue
+          username: postgres
+          password: Password
     hikari:
        #最小空闲连接数量
        minimum-idle: 10

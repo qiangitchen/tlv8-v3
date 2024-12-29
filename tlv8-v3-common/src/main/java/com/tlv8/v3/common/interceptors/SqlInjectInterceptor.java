@@ -85,7 +85,7 @@ public class SqlInjectInterceptor implements HandlerInterceptor {
 		if (value == null || "".equals(value)) {
 			return false;
 		}
-		String xssStr = "and |or |select |update |delete |drop |truncate |=|!=";// |%20 |--
+		String xssStr = "and |or |select |update |delete |drop |truncate |!=";// |%20 |-- |=
 		String[] xssArr = xssStr.split("\\|");
 		for (int i = 0; i < xssArr.length; i++) {
 			if (value.indexOf(xssArr[i]) > -1) {
@@ -125,8 +125,8 @@ public class SqlInjectInterceptor implements HandlerInterceptor {
 	 * @des 需要忽略拦截的请求[慎用]
 	 */
 	private boolean isBackAction(String requestPath) {
-		return requestPath.contains("/ureport/") || requestPath.endsWith("/core/expportAction")
-				|| requestPath.endsWith("/core/importAction");
+		return false;
+//		return requestPath.endsWith("/core/expportAction") || requestPath.endsWith("/core/importAction");
 	}
 
 }

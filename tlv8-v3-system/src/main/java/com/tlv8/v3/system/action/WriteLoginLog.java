@@ -3,6 +3,8 @@ package com.tlv8.v3.system.action;
 import java.util.Calendar;
 import java.util.Date;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tlv8.v3.common.utils.IDUtils;
@@ -10,8 +12,6 @@ import com.tlv8.v3.common.utils.IPUtils;
 import com.tlv8.v3.system.help.PassCodeHelper;
 import com.tlv8.v3.system.pojo.SaLoginlog;
 import com.tlv8.v3.system.service.ISaLoginlogService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 public class WriteLoginLog {
 
