@@ -65,4 +65,11 @@ public interface SaTaskService {
 	 * @return
 	 */
 	List<SaTask> selectActivityOtherTask(String flowID, String activity, String taskID, String statusid);
+	
+	/**
+	 * 根据业务ID查询流程信息
+	 * @param sdata1
+	 * @return
+	 */
+	List<SaTask> selectProcessByBillID(String sdata1);
 }

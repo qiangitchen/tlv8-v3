@@ -103,6 +103,6 @@
         select
         <include refid="Base_Column_List"/>
         from sa_opmenutree
-        where process = #{process,jdbcType=VARCHAR} and activity = #{activity,jdbcType=VARCHAR} limit 1
+        where process = #{process,jdbcType=VARCHAR} and activity = #{activity,jdbcType=VARCHAR} 
     </select>
 </mapper>

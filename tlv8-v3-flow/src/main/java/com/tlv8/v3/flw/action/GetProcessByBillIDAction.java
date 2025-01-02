@@ -1,21 +1,17 @@
 package com.tlv8.v3.flw.action;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.tlv8.v3.common.action.ActionSupport;
 import com.tlv8.v3.common.base.Data;
-import com.tlv8.v3.common.db.DBUtils;
-import com.alibaba.fastjson.JSON;
+import com.tlv8.v3.flw.service.SaTaskService;
 
 /**
  * 
@@ -35,6 +31,9 @@ public class GetProcessByBillIDAction extends ActionSupport {
 		this.data = data;
 	}
 
+	@Autowired
+	SaTaskService saTaskService;
+
 	/**
 	 * 根据业务ID获取流程信息
 	 */
@@ -42,21 +41,8 @@ public class GetProcessByBillIDAction extends ActionSupport {
 	@RequestMapping("/getProcessByBillIDAction")
 	public Object execute() throws Exception {
 		try {
-			String sql = "";
-			if (DBUtils.IsMSSQLDB("system")) {
-				sql = "select TOP 1 SID, SFLOWID, SPROCESS, SEURL from SA_TASK where sData1 = '" + sdata1
-						+ "' order by SCREATETIME desc";
-			} else if (DBUtils.IsMySQLDB("system")) {
-				sql = "select SID, SFLOWID, SPROCESS, SEURL from SA_TASK where sData1 = '" + sdata1
-						+ "' order by SCREATETIME desc limit 0,1";
-			} else {
-				sql = "select SID, SFLOWID, SPROCESS, SEURL from "
-						+ "(select SID, SFLOWID, SPROCESS, SEURL from SA_TASK where sData1 = '" + sdata1
-						+ "' order by SCREATETIME desc) where rownum = 1";
-			}
-			List<Map<String, String>> list = DBUtils.execQueryforList("system", sql, true);
 			data.setFlag("true");
-			data.setData(JSON.toJSONString(list));
+			data.setData(JSON.toJSONString(saTaskService.selectProcessByBillID(sdata1)));
 		} catch (Exception e) {
 			data.setFlag("false");
 			data.setMessage(e.getMessage());
@@ -66,11 +52,7 @@ public class GetProcessByBillIDAction extends ActionSupport {
 	}
 
 	public void setSdata1(String sdata1) {
-		try {
-			this.sdata1 = URLDecoder.decode(sdata1, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		this.sdata1 = sdata1;
 	}
 
 	public String getSdata1() {

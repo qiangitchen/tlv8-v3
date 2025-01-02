@@ -32,15 +32,15 @@ spring:
       primary: oa
       datasource:
         system:
-          driver-class-name: org.postgresql.Driver
-          url: jdbc:postgresql://dev.tlv8.com:5432/tlv8-vue
-          username: postgres
-          password: Password
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+          username: tlv8
+          password: tlv8
         oa:
-          driver-class-name: org.postgresql.Driver
-          url: jdbc:postgresql://dev.tlv8.com:5432/tlv8-vue
-          username: postgres
-          password: Password
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+          username: tlv8
+          password: tlv8
     hikari:
        #最小空闲连接数量
        minimum-idle: 10

@@ -71,5 +71,5 @@ public interface SaMenuTreeMapper {
 	 * @param param
 	 * @return {@link SaMenuTree}
 	 */
-	SaMenuTree selectByProcessActivity(Map<String, String> param);
+	List<SaMenuTree> selectByProcessActivity(Map<String, String> param);
 }

@@ -8,6 +8,8 @@ import com.tlv8.v3.flw.service.SaTaskService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +73,15 @@ public class SaTaskServiceImpl implements SaTaskService {
 		param.put("taskID", taskID);
 		param.put("statusid", statusid);
 		return saTaskMapper.selectActivityOtherTask(param);
+	}
+
+	@Override
+	public List<SaTask> selectProcessByBillID(String sdata1) {
+		List<SaTask> list = saTaskMapper.selectProcessByBillID(sdata1);
+		if (list.size() > 0) {
+			return Arrays.asList(list.get(0));
+		}
+		return new ArrayList<SaTask>();
 	}
 
 }

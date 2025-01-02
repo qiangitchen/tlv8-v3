@@ -81,4 +81,11 @@ public interface SaTaskMapper {
 	 * @return
 	 */
 	List<SaTask> selectActivityOtherTask(Map<String, Object> param);
+	
+	/**
+	 * 根据业务ID查询流程信息
+	 * @param sdata1
+	 * @return
+	 */
+	List<SaTask> selectProcessByBillID(String sdata1);
 }

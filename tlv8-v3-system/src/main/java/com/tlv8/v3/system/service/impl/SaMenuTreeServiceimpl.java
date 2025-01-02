@@ -65,6 +65,10 @@ public class SaMenuTreeServiceimpl implements ISaMenuTreeService {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("process", process);
 		param.put("activity", activity);
-		return saMenuTreeMapper.selectByProcessActivity(param);
+		List<SaMenuTree> list = saMenuTreeMapper.selectByProcessActivity(param);
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
 	}
 }

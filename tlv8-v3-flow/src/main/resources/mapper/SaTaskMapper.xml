@@ -285,4 +285,16 @@
       and SSTATUSID = #{statusid,jdbcType=VARCHAR} 
       order by SCREATETIME desc
   </select>
+  <select id="selectProcessByBillID" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select sid, sparentid, sname, scontent, sremark, sflowid, stypeid, stypename, sprocess, 
+    sactivity, screatetime, sdistributetime, slastmodifytime, swarningtime, slimittime, 
+    sestarttime, sefinishtime, sastarttime, safinishtime, sexecutetime, scpersonid, scpersonname, 
+    scdeptid, scdeptname, scognid, scognname, sepersonid, sepersonname, sedeptid, sedeptname, 
+    seognid, seognname, slock, sstatusid, sstatusname, skindid, scurl, seurl, sexecutemode, 
+    ssequence, scpersoncode, scposid, scposcode, scposname, scdeptcode, scogncode, scfid, 
+    sepersoncode, seposid, seposcode, seposname, sedeptcode, seogncode, sefid, sdata1, 
+    sdata2, sdata3, sdata4, scfname, sefname, version
+        from sa_task
+        where sdata1 = #{sdata1,jdbcType=VARCHAR} order by SCREATETIME desc
+    </select>
 </mapper>
