@@ -22,13 +22,6 @@
 			<optional>true</optional> <!-- 表示依赖不会传递 -->
 		</dependency>
 
-		<!-- 测试 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- 通用工具 -->
 		<dependency>
 			<groupId>com.tlv8.v3</groupId>
@@ -39,6 +32,18 @@
 		<dependency>
 			<groupId>com.tlv8.v3</groupId>
 			<artifactId>tlv8-v3-system</artifactId>
+		</dependency>
+		
+		<!-- 文档服务 -->
+		<dependency>
+			<groupId>com.tlv8.v3</groupId>
+			<artifactId>tlv8-v3-doc-server</artifactId>
+		</dependency>
+
+		<!-- 文件存取 -->
+		<dependency>
+			<groupId>com.tlv8.v3</groupId>
+			<artifactId>tlv8-v3-doc-client</artifactId>
 		</dependency>
 
 		<!-- 流程引擎 -->
@@ -70,12 +75,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<warName>${project.artifactId}</warName>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
