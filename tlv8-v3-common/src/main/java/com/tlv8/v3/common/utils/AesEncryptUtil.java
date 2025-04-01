@@ -51,7 +51,7 @@ public class AesEncryptUtil {
 //			}
 //			byte[] encrypted = encipher.doFinal(plaintext);
 //			return new Base64().encodeToString(encrypted);
-			return new Base64().encodeToString(data.getBytes("UTF-8"));
+			return new String(new Base64().encode(data.getBytes("UTF-8")), "UTF-8");
 		} catch (Exception e) {
 			return null;
 		}

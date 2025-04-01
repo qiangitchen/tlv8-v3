@@ -3,15 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
 
 	<groupId>com.tlv8.v3</groupId>
 	<artifactId>tlv8-v3</artifactId>
+	<version>3.4.0</version>
 	<packaging>pom</packaging>
 
 	<name>tlv8-v3</name>
@@ -19,6 +14,7 @@
 	<url>https://www.tlv8.com</url>
 
 	<properties>
+		<spring-boot.version>3.4.4</spring-boot.version>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -33,6 +29,14 @@
 	<!-- 依赖声明 -->
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
 			<!-- io常用工具类 -->
 			<dependency>
 				<groupId>commons-io</groupId>
@@ -64,6 +68,13 @@
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.2</version>
+			</dependency>
+			
+			<!--常用工具类 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.17.0</version>
 			</dependency>
 
 			<!-- velocity代码生成使用模板 -->
@@ -178,12 +189,12 @@
 				<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
 				<version>3.5.9</version>
 			</dependency>
-			
+
 			<!-- 动态数据源切换 -->
 			<dependency>
-			    <groupId>com.baomidou</groupId>
-			    <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
-			    <version>4.3.1</version>
+				<groupId>com.baomidou</groupId>
+				<artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+				<version>4.3.1</version>
 			</dependency>
 
 			<!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
@@ -248,7 +259,7 @@
 				<artifactId>tlv8-v3-system</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 文档服务 -->
 			<dependency>
 				<groupId>com.tlv8.v3</groupId>
@@ -311,14 +322,20 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
 				<configuration>
 					<compilerArgs>
-			            <arg>-parameters</arg>
-			        </compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
 			</plugin>
 		</plugins>
 	</build>
