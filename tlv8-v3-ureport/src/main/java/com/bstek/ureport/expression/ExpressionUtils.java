@@ -65,6 +65,7 @@ import com.bstek.ureport.expression.parse.builder.VariableExpressionBuilder;
  * @author Jacky.gao
  * @since 2016年12月24日
  */
+@SuppressWarnings("deprecation")
 public class ExpressionUtils implements ApplicationContextAware{
 	public static final String EXPR_PREFIX="${";
 	public static final String EXPR_SUFFIX="}";

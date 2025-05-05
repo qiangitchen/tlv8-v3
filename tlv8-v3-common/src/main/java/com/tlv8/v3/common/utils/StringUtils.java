@@ -16,6 +16,7 @@ import com.tlv8.v3.common.text.StrFormatter;
  * 
  * @author tlv8
  */
+@SuppressWarnings("deprecation")
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	/** 空字符串 */
 	private static final String NULLSTR = "";

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.tlv8.v3.common.annotation.RepeatSubmit;
 import com.tlv8.v3.common.constant.Constants;
 import com.tlv8.v3.common.filter.RepeatedlyRequestWrapper;

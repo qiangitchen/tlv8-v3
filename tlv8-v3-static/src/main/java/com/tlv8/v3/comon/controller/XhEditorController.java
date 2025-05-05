@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONException;
+import com.alibaba.fastjson2.JSONObject;
 import com.tlv8.v3.common.utils.doc.DocSvrUtils;
 import com.tlv8.v3.doc.clt.components.DocClient;
 import com.tlv8.v3.doc.clt.obj.DocUploadRes;

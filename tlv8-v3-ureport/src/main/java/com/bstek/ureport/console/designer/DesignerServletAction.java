@@ -54,6 +54,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author Jacky.gao
  * @since 2017年1月25日
  */
+@SuppressWarnings("deprecation")
 public class DesignerServletAction extends RenderPageServletAction {
 	private ReportRender reportRender;
 	private ReportParser reportParser;

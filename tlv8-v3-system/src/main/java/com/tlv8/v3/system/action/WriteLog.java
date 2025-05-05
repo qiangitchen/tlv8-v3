@@ -1,6 +1,6 @@
 package com.tlv8.v3.system.action;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.tlv8.v3.system.bean.ContextBean;
 import com.tlv8.v3.system.controller.UserController;
 import com.tlv8.v3.system.pojo.SaLog;

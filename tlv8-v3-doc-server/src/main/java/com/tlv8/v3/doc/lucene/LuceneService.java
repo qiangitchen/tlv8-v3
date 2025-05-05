@@ -47,11 +47,10 @@ public class LuceneService {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	public synchronized static void stop() {
 		if (svIsStarted) {
 			svIsStarted = false;
-			thread.stop();
+			//thread.stop();
 			thread = null;
 		}
 	}

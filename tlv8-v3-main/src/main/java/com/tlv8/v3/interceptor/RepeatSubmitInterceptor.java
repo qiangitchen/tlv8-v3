@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.tlv8.v3.common.annotation.RepeatSubmit;
 import com.tlv8.v3.common.domain.AjaxResult;
 import com.tlv8.v3.common.utils.ServletUtils;

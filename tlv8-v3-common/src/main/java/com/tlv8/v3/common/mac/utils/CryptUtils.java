@@ -1,6 +1,6 @@
 package com.tlv8.v3.common.mac.utils;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 
 import com.tlv8.v3.common.domain.AjaxResult;
 import com.tlv8.v3.common.utils.FileAndString;
@@ -43,7 +43,7 @@ public class MenusController {
 		JSONArray jsona = new JSONArray();
 		List<SaMenuTree> roots = saMenuTreeService.selectRootList();
 		for (SaMenuTree me : roots) {
-			JSONObject json = (JSONObject) JSONObject.toJSON(me);
+			JSONObject json = (JSONObject) JSON.toJSON(me);
 			json.put("id", me.getSid());
 			json.put("key", me.getSid());
 			JSONArray child = loadMenuChild(me.getSid());
@@ -59,7 +59,7 @@ public class MenusController {
 		JSONArray jsona = new JSONArray();
 		List<SaMenuTree> roots = saMenuTreeService.selectByPID(pid);
 		for (SaMenuTree me : roots) {
-			JSONObject json = (JSONObject) JSONObject.toJSON(me);
+			JSONObject json = (JSONObject) JSON.toJSON(me);
 			json.put("id", me.getSid());
 			json.put("key", me.getSid());
 			JSONArray child = loadMenuChild(me.getSid());

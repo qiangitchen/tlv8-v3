@@ -1,6 +1,6 @@
 package com.tlv8.v3.common.utils;
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson2.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;

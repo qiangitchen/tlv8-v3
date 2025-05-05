@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import com.tlv8.v3.system.resource.MessageResourceReader;
 
-@SuppressWarnings("deprecation")
 public final class MessageResource {
 	private static final MessageResourceReader reader = MessageResourceReader.getResourceReader();
 

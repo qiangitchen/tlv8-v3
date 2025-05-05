@@ -14,16 +14,22 @@
 	<url>https://www.tlv8.com</url>
 
 	<properties>
-		<spring-boot.version>3.4.4</spring-boot.version>
+		<spring-boot.version>3.4.5</spring-boot.version>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<commons.io.version>2.19.0</commons.io.version>
+		<commons.httpclient.version>3.1</commons.httpclient.version>
+		<commons.beanutils.version>1.10.1</commons.beanutils.version>
+		<commons.collections.version>3.2.2</commons.collections.version>
 		<velocity.version>1.7</velocity.version>
 		<poi.version>5.4.1</poi.version>
+		<pdfbox.version>3.0.5</pdfbox.version>
 		<lucene.version>3.6.0</lucene.version>
-		<zxing.version>3.0.0</zxing.version>
-		<sa-token.version>1.39.0</sa-token.version>
-		<fastjson.version>2.0.49</fastjson.version>
+		<zxing.version>3.5.3</zxing.version>
+		<sa-token.version>1.42.0</sa-token.version>
+		<fastjson.version>2.0.57</fastjson.version>
+		<org.json.version>20250107</org.json.version>
 	</properties>
 
 	<!-- 依赖声明 -->
@@ -41,22 +47,23 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>2.19.0</version>
+				<version>${commons.io.version}</version>
 			</dependency>
 
 			<!-- httpclinet -->
 			<dependency>
 				<groupId>commons-httpclient</groupId>
 				<artifactId>commons-httpclient</artifactId>
-				<version>3.1</version>
+				<version>${commons.httpclient.version}</version>
 			</dependency>
 
 			<!-- beanutils工具类 -->
 			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
-				<version>1.10.1</version>
+				<version>${commons.beanutils.version}</version>
 			</dependency>
+			
 			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils-core</artifactId>
@@ -67,7 +74,7 @@
 			<dependency>
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
-				<version>3.2.2</version>
+				<version>${commons.collections.version}</version>
 			</dependency>
 			
 			<!--常用工具类 -->
@@ -122,7 +129,7 @@
 			<dependency>
 				<groupId>org.apache.pdfbox</groupId>
 				<artifactId>pdfbox</artifactId>
-				<version>2.0.24</version>
+				<version>${pdfbox.version}</version>
 			</dependency>
 
 			<dependency>
@@ -173,21 +180,21 @@
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-mapper-asl</artifactId>
-				<version>1.9.1</version>
+				<version>1.9.13</version>
 			</dependency>
 
 			<!--antlr-->
 			<dependency>
 				<groupId>org.antlr</groupId>
 				<artifactId>antlr4-runtime</artifactId>
-				<version>4.5.3</version>
+				<version>4.13.2</version>
 			</dependency>
 
 			<!-- mybatis plus 包 -->
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-				<version>3.5.11</version>
+				<version>3.5.12</version>
 			</dependency>
 
 			<!-- 动态数据源切换 -->
@@ -204,13 +211,13 @@
 				<version>${sa-token.version}</version>
 			</dependency>
 
-			<!-- Sa-Token 整合 Redis （使用 jdk 默认序列化方式） -->
+			<!-- Sa-Token 整合 Redis -->
 			<dependency>
-				<groupId>cn.dev33</groupId>
-				<artifactId>sa-token-redis</artifactId>
-				<version>${sa-token.version}</version>
+			    <groupId>cn.dev33</groupId>
+			    <artifactId>sa-token-redis-template</artifactId>
+			    <version>${sa-token.version}</version>
 			</dependency>
-
+			
 			<!-- 阿里JSON解析器 -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
@@ -222,7 +229,7 @@
 			<dependency>
 				<groupId>org.json</groupId>
 				<artifactId>json</artifactId>
-				<version>20240303</version>
+				<version>${org.json.version}</version>
 			</dependency>
 
 			<!-- Dom4j xml解析 -->
@@ -236,7 +243,7 @@
 			<dependency>
 				<groupId>com.github.oshi</groupId>
 				<artifactId>oshi-core-java11</artifactId>
-				<version>6.6.5</version>
+				<version>6.8.1</version>
 			</dependency>
 
 			<!-- WebSocket 客户端 -->

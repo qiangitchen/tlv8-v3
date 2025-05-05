@@ -118,10 +118,10 @@
 			<artifactId>sa-token-spring-boot3-starter</artifactId>
 		</dependency>
 
-		<!-- Sa-Token 整合 Redis （使用 jdk 默认序列化方式） -->
+		<!-- Sa-Token 整合 Redis -->
 		<dependency>
 			<groupId>cn.dev33</groupId>
-			<artifactId>sa-token-redis</artifactId>
+			<artifactId>sa-token-redis-template</artifactId>
 		</dependency>
 
 		<!-- pool 对象池 -->

@@ -2,7 +2,7 @@ package com.tlv8.v3.common.domain;
 
 import java.util.HashMap;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.tlv8.v3.common.constant.HttpStatus;
 import com.tlv8.v3.common.utils.StringUtils;
 
